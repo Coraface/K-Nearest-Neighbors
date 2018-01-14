@@ -1,3 +1,3 @@
-# Parallel-Systems
+# Parallel Systems
 
 2nd assignment
