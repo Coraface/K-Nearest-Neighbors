@@ -34,7 +34,7 @@ int main(int argc, char** argv)
    }
 
    k = atoi(argv[1]);
-
+ 
    int i,j,l, cnt, cnt2 = 0, shift = 0;                                                                // iteretors, counter used for struct
    double distance;
    int numtasks, id, next, previous, blocks = 0, block, flag = 0, flag2 = 0, flag3 = 0;                // Mpi variables
