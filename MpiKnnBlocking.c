@@ -59,7 +59,7 @@ int main(int argc, char** argv)
    for(i = 0; i < block; i++)
       array[i] = (struct data*)malloc(k * sizeof(struct data));
 
-   if (numtasks <= 4) {                                                                               // define source process and elements to send/receive, then perform collective scatter
+   if (numtasks <= 8) {                                                                               // define source process and elements to send/receive, then perform collective scatter
       source = 0;
       sendcnt = J*(block);
       recvcnt = sendcnt;
