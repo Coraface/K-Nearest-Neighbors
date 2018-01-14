@@ -32,7 +32,7 @@ int main(int argc, char** argv)
  	   argv[1]);
      exit(1);
    }
-
+ 
    k = atoi(argv[1]);
  
    int i,j,l, cnt, cnt2 = 0;                                                                                    // iteretors, counter used for struct
