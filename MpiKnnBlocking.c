@@ -55,7 +55,7 @@ int main(int argc, char** argv)
    double originbuf[block][J];                                                                       // Table to store original block
    double recvbuf[block][J];                                                                         // Table to store received block
 
-   struct data** array = (struct data**)malloc(block * sizeof(struct data));
+   struct data** array = (struct data**)malloc(block * sizeof(struct data*));
    for(i = 0; i < block; i++)
       array[i] = (struct data*)malloc(k * sizeof(struct data));
 
