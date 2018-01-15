@@ -35,9 +35,9 @@ int main(int argc, char** argv)
   
    k = atoi(argv[1]);
  
-   int i,j,l, cnt, cnt2 = 0;                                                                                    // iteretors, counter used for struct
+   int i,j,l, cnt, cnt2 = 0;                                                                          // iteretors, counter used for struct
    double distance;
-   int numtasks, id, next, previous, block, blocks = 0, shift=0;                                                           // Mpi variables
+   int numtasks, id, next, previous, block, blocks = 0, shift=0;                                      // Mpi variables
    double sendcnt, recvcnt, source;
 
    getData();                                                                                         // get data from .mat file
@@ -52,8 +52,8 @@ int main(int argc, char** argv)
    if(id == (numtasks - 1))  next = 0;
 
    block = I/numtasks;
-   double originbuf[block][J];                                                                       // Table to store original block
-   double recvbuf[block][J];                                                                         // Table to store received block
+   double originbuf[block][J];                                                                        // Table to store original block
+   double recvbuf[block][J];                                                                          // Table to store received block
 
    struct data** array = (struct data**)malloc(block * sizeof(struct data*));
    for(i = 0; i < block; i++)
@@ -79,7 +79,7 @@ int main(int argc, char** argv)
       cnt = 1;                                                                                        // initialize counter for every i element
       for(j = 0; j < block; j++)
       {
-         if(j == i) continue;                                                            // distance = 0, duh
+         if(j == i) continue;                                                                         // distance = 0, duh
          distance = 0;                                                                                // initialize distance for every j
          for(l = 0; l < J; l++)  distance += pow(originbuf[i][l]-originbuf[j][l], 2);
          distance = sqrt(distance);
