@@ -73,7 +73,9 @@ int main(int argc, char** argv)
 
    gettimeofday (&startwtime, NULL);
 
+	
    /*******--------------KNN-------------*******/
+   /***---for origin block---***/
    for(i = 0; i < block; i++)
    {
       cnt = 1;                                                                                        // initialize counter for every i element
@@ -103,15 +105,17 @@ int main(int argc, char** argv)
       }
    }
 
+	
+	/*****-----for the other blocks-----*****/
 	while(blocks != (numtasks-1)) {
 		if(id != 0 && blocks == 0){
 			MPI_Recv(recvbuf, recvcnt, MPI_DOUBLE, previous, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-			for(i = 0; i<block;i++)
+			/*for(i = 0; i<block;i++)
 			{
 				for(j=0;j<J;j++)
 					printf("%lf  ", a[i][j]);
 			}
-			printf("id %d received from previous.\n\n", id);
+			printf("id %d received from previous.\n\n", id);*/
 			MPI_Send(originbuf, sendcnt, MPI_DOUBLE, next, 0, MPI_COMM_WORLD);
 		}
 		if(id == 0 && blocks == 0){
@@ -121,22 +125,22 @@ int main(int argc, char** argv)
 
 		if(id != 0  && blocks > 0) {
 			MPI_Recv(recvbuf, recvcnt, MPI_DOUBLE, previous, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-			for(i = 0; i<block;i++)
+			/*for(i = 0; i<block;i++)
 			{
 				for(j=0;j<J;j++)
 					printf("%lf  ", a[i][j]);
 			}
-			printf("id %d received from previous.\n\n", id);
+			printf("id %d received from previous.\n\n", id);*/
 		}
 
 		if(id == 0 && blocks > 0){
 			MPI_Recv(recvbuf, recvcnt, MPI_DOUBLE, previous, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-			for(i = 0; i<block;i++)
+			/*for(i = 0; i<block;i++)
 			{
 				for(j=0;j<J;j++)
 					printf("%lf  ", a[i][j]);
 			}
-			printf("id %d received from previous.\n\n", id);
+			printf("id %d received from previous.\n\n", id);*/
 		}
 		for(i = 0; i < block; i++)
       {
@@ -179,17 +183,11 @@ int main(int argc, char** argv)
       }
    }
 
-
-
-
-
-
-
-
    gettimeofday (&endwtime, NULL);
    seq_time = (double)((endwtime.tv_usec - startwtime.tv_usec)/1.0e6
              + endwtime.tv_sec - startwtime.tv_sec);
 
+   /****------RESULTS------****/
    for(i = 0; i < block; i++)
    {
       printf("RESULT : [%d] element has element : ", i+(id*(block)));
