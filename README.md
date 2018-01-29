@@ -1,3 +1,3 @@
-# Parallel Systems
+# MPI Communications
 
 2nd assignment
